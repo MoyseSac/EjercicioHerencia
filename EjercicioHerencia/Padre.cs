@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.ComponentModel.DataAnnotations;
 namespace EjercicioHerencia
 {
     public class Padre
     {
-
+        [Required(ErrorMessage = "El Nombre del requerido")]
         public string Nombre { get; set; }
+        [Required(ErrorMessage = "El Apellido del requerido")]
         public string Apellido { get; set; }
         public string Direccion { get; set; }
 

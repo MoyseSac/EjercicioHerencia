@@ -1,0 +1,50 @@
+﻿@page "/catedratico2"
+@inject HttpClient http
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+<h3>Profesor</h3>
+
+<EditForm Model="@catedratico" OnInvalidSubmit="@Guardar">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div>
+        <label for="Nombre">Ingrese Nombre:</label>
+        <InputText id="Nombre" @bind-Value="catedratico.Nombre" />
+        <ValidationMessage For="() => catedratico.Nombre" />
+    </div>
+    <div>
+        <label for="Apellido">Ingrese Apellido:</label>
+        <InputText id="Apellido" @bind-Value="catedratico.Apellido" />
+        <ValidationMessage For="() => catedratico.Apellido" />
+    </div>
+    <div>
+        <label for="Direccion">Ingrese Direccion:</label>
+        <InputText id="Direccion" @bind-Value="catedratico.Direccion" />
+        <ValidationMessage For="() => catedratico.Direccion" />
+    </div>
+    <div>
+        <label for="FechaNac">Ingrese Fecha:</label>
+        <InputDate id="FechaNac" @bind-Value="catedratico.FechaNac" />
+        <ValidationMessage For="() => catedratico.FechaNac" />
+    </div>
+    <div>
+        <label for="Titulo">Ingrese Titulo:</label>
+        <InputText id="Titulo" @bind-Value="catedratico.Titulo" />
+        <ValidationMessage For="() => catedratico.Titulo" />
+    </div>
+    <div>
+        <label for="Colegiado">Ingrese Colegiado:</label>
+        <InputNumber id="Colegiado" @bind-Value="catedratico.Colegiado" />
+        <ValidationMessage For="() => catedratico.Colegiado" />
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</EditForm>
+@code {
+    Catedratico catedratico = new Catedratico();
+    List<Catedratico> catedraticos = new List<Catedratico>();
+    protected async Task Guardar()
+    {
+        catedraticos.Add(catedratico);
+        await localStorage.SetItemAsync("catedraticos", catedraticos);
+
+    }
+}
