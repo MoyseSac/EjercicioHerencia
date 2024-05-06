@@ -11,10 +11,11 @@ namespace EjercicioHerencia
         public string Titulo { get; set; }
         [Required(ErrorMessage = "El Colegiado")]
         [StringLength(6, ErrorMessage = "Deben ser menos de 6 digitos")]
-        public int Colegiado { get; set; }
+        public string Colegiado { get; set; }
         public Catedratico()
         {
             Titulo= string.Empty;
+            Colegiado = string.Empty;
         }
     }
 }
